@@ -29,11 +29,11 @@ public class PointAndShoot : MonoBehaviour
     {
         // Cursor
         target = transform.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
-        crosshairs.transform.position = new Vector2(target.x, target.y);
+        crosshairs.transform.position = new Vector2(-target.x, -target.y);
 
         // Player
         Vector3 difference = target - player.transform.position;
-        float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        float rotationZ = Mathf.Atan2(-difference.y, -difference.x) * Mathf.Rad2Deg;
         player.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
     }
 }
