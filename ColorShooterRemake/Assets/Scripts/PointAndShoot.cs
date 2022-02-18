@@ -6,7 +6,6 @@ public class PointAndShoot : MonoBehaviour
 {
     public GameObject crosshairs;
     public GameObject player;
-    private Shooting shooting;
 
     public Transform FirePoint2;
         

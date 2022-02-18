@@ -6,7 +6,7 @@ public class Shooting : MonoBehaviour
 {
     public GameObject PrefabAmmo;
     public Transform Firepoint;
-    public float SpeedAmmo = 1f;
+    public float SpeedAmmo = 0.5f;
     private Rigidbody2D rb;
 
     void Update()
