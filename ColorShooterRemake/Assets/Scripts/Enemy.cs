@@ -8,19 +8,20 @@ public class Enemy : MonoBehaviour
     public float Speed = 2.5f;
     public float Health = 100f;
     public static float CurrentHealth;
+    public static SpriteRenderer rend;
 
-    // Start is called before the first frame update
     void Start()
     {
+        rend = GetComponent<SpriteRenderer>();
         CurrentHealth = Health;
         Player = GameObject.Find("TurretHolder").GetComponent<Transform>();        
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (CurrentHealth <= 0f)
         {
+           // Debug.Log("Kill");
             Destroy(gameObject);
         }  
     }
