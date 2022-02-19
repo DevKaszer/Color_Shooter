@@ -4,18 +4,30 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public Transform Player;
+    public float Speed = 2.5f;
+    public float Health = 100f;
+    public static float CurrentHealth;
 
-    [SerializeField] float Speed = 5f;
-    [SerializeField] GameObject Target;
+    // Start is called before the first frame update
+    void Start()
+    {
+        CurrentHealth = Health;
+        Player = GameObject.Find("TurretHolder").GetComponent<Transform>();        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (CurrentHealth <= 0f)
+        {
+            Destroy(gameObject);
+        }  
+    }
 
     private void FixedUpdate()
     {
-      moveEnemy();
+        var TargetPos = new Vector2(Player.position.x, transform.position.y);
+        transform.position = Vector2.MoveTowards(transform.position, TargetPos, Speed * Time.deltaTime);
     }
-
-    void moveEnemy()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, Target.transform.position,Speed * Time.deltaTime);
-    }
-
 }
